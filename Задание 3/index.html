@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="input__values">
+        <p>Введите первое число:</p>
+        <input id="input__one" type="text">
+        <div class="input__buttons">
+            <button id="sum" onclick="op='+'">Сложить</button>
+            <button id="subtract" onclick="op='-'">Вычесть</button>
+            <button id="divide" onclick="op='/'">Разделить</button>
+            <button id="multiply" onclick="op='*'">Умножить</button>
+        </div>
+        <p>Введите второе число:</p>
+        <input  id="input__two" type="text">
+    </div>
+    <button id="result" onclick="calc()">Посчитать</button>
+    <div id="output"></div>
+    
+    <script>
+        let op;
+        let res;
+        function calc(){
+            let one = +document.getElementById('input__one').value;
+            let two = +document.getElementById('input__two').value;
+            class Calculator {
+                static sum(){
+                    return +one + +two;
+                }
+                static subtract(){
+                    return one - two;
+                }
+                static divide(){
+                    return one / two;
+                }
+                static multiply(){
+                    return one * two;
+                }
+            }
+            switch (op) {
+                case '+':
+                    res = Calculator.sum();
+                    break;
+                case '-':
+                    res = Calculator.subtract();
+                    break;
+                case '*':
+                    res = Calculator.multiply();
+                    break;
+                case '/':
+                    res = Calculator.divide();
+                    break;
+            }
+            document.getElementById('output').innerHTML = res;
+        }
+    </script>
+</body>
+</html>

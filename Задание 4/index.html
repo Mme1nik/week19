@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+<body>   
+    <script>
+            class Validator {
+                isEmail(str) {
+                    let mailFormat = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
+                    if (str.match(mailFormat)) {
+                        return true;
+                    }
+                    else {
+                        alert("Ваш адрес электронной почты введен неверно!");
+                        return false;
+                    }
+                }
+                isDomain(str){
+                    let domainFormat = /^([\wёa-я-]{2,}\.)+[\wёa-я-]{2,}$/i;
+                    if (str.match(domainFormat)) {
+                        return true;
+                    }
+                    else {
+                        alert("Ваш домен введен неверно!");
+                        return false;
+                    }
+                }
+                isDate(str){
+                    let dateFormat = /^(0?[1-9]|[12][0-9]|3[01])[\/\.](0?[1-9]|1[012])[\/\.]\d{4}$/;
+                    if (str.match(dateFormat)) {
+                        return true;
+                    }
+                    else {
+                        alert("Дата введена неверно!");
+                        return false;
+                    }
+                }
+                isPhone(str){
+                    let phoneFormat = /\+7\(\d{3}\)\d{3}-\d{2}-\d{2}/
+                    if (str.match(phoneFormat)) {
+                        return true;
+                    }
+                    else {
+                        alert("Номер введен неверно!");
+                        return false;
+                    }
+                }
+                }
+                class ValidatorStatic {
+                    static isEmail(str) {
+                    let mailFormat = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
+                    if (str.match(mailFormat)) {
+                        return true;
+                    }
+                    else {
+                        alert("Ваш адрес электронной почты введен неверно!");
+                        return false;
+                    }
+                }
+                static isDomain(str){
+                    let domainFormat = /^([\wёa-я-]{2,}\.)+[\wёa-я-]{2,}$/i;
+                    if (str.match(domainFormat)) {
+                        return true;
+                    }
+                    else {
+                        alert("Ваш домен введен неверно!");
+                        return false;
+                    }
+                }
+                static isDate(str){
+                    let dateFormat = /^(0?[1-9]|[12][0-9]|3[01])[\/\.](0?[1-9]|1[012])[\/\.]\d{4}$/;
+                    if (str.match(dateFormat)) {
+                        return true;
+                    }
+                    else {
+                        alert("Дата введена неверно!");
+                        return false;
+                    }
+                }
+                static isPhone(str){
+                    let phoneFormat = /\+7\(\d{3}\)\d{3}-\d{2}-\d{2}/
+                    if (str.match(phoneFormat)) {
+                        return true;
+                    }
+                    else {
+                        alert("Номер введен неверно!");
+                        return false;
+                    }
+                }
+                }
+                var validator = new Validator();
+                console.log(validator.isEmail('alisa@mail.ru'));
+                console.log(validator.isDomain('itgirlschool.ru'));
+                console.log(validator.isDate('12.05.2021'));
+                console.log(validator.isPhone('+7(910)123-45-67'));
+
+                console.log(ValidatorStatic.isEmail('alisa@mail.ru'));
+                console.log(ValidatorStatic.isDomain('itgirlschool.ru'));
+                console.log(ValidatorStatic.isDate('12.05.2021'));
+                console.log(ValidatorStatic.isPhone('+7(910)123-45-67'));
+    </script>
+</body>
+</html>

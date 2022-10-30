@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <fieldset>
+            <legend>Имя</legend>
+            <label for="pet_names">Кличка питомца</label>
+            <input type="text" id="pet_names" required><br><br>
+            <label for="owner_name">Имя владельца</label>
+            <input type="text" id="owner_name"><br><br>
+            <label for="owner_contacts" >Контакты владельца</label>
+            <input type="text" id="owner_contacts" required>
+        </fieldset>
+        <p>Выберите породу:</p>
+        <select id="pet_breed">
+            <option value="Абиссинская кошка">Абиссинская кошка</option>
+            <option value="Американская жесткошерстная кошка">Американская жесткошерстная кошка</option>
+            <option value="Азиатская кошка">Азиатская кошка</option>
+            <option value="Австралийский мист">Австралийский мист</option>
+            <option value="Балийская кошка">Балийская кошка</option>
+            <option value="Турецкий Ван">Турецкий Ван</option>
+            <option value="Тонкинская кошка">Тонкинская кошка</option>
+            <option value="Шантильи-Тиффани">Шантильи-Тиффани</option>
+            <option value="Сомалийская кошка">Сомалийская кошка</option>
+            <option value="Сноу-шу">Сноу-шу</option>
+            <option value="Сингапура">Сингапура</option>
+            <option value="Сиамская">Сиамская</option>
+            <option value="Селкирк-Рекс">Селкирк-Рекс</option>
+            <option value="Шотландская вислоухая">Шотландская вислоухая</option>
+            <option value="Саванна">Саванна</option>
+            <option value="Русская голубая">Русская голубая</option>
+            <option value="Рэгдолл">Рэгдолл</option>
+            <option value="Пиксибоб">Пиксибоб</option>
+            <option value="Персидская">Персидская</option>
+            <option value="Оцикет">Оцикет</option>
+            <option value="Норвежская лесная">Норвежская лесная</option>
+            <option value="Манчкин">Манчкин</option>
+            <option value="Мэнкс">Мэнкс</option>
+            <option value="Лаперм">Лаперм</option>
+            <option value="Корат">Корат</option>
+            <option value="Као-Мани">Као-Мани</option>
+            <option value="Бобтейл">Бобтейл</option>
+            <option value="Египетский мау">Египетский мау</option>
+            <option value="Девон-Рекс">Девон-Рекс</option>
+            <option value="Кимрик">Кимрик</option>
+            <option value="Корниш-Рекс">Корниш-Рекс</option>
+            <option value="Шиншилла">Шиншилла</option>
+            <option value="Бурмилла">Бурмилла</option>
+            <option value="Британская">Британская</option>
+            <option value="Бирманская">Бирманская</option>
+            <option value="Бенгальская">Бенгальская</option>
+        </select>
+        <p>- Чем питается?</p>
+        <input type="checkbox" class="checkbox" name="food" id="food" value="Сухой корм">
+        <span>Сухой корм</span><br>
+        <input type="checkbox" class="checkbox" name="food" id="food" value="Влажный корм">
+        <span>Влажный корм</span><br>
+        <input type="checkbox" class="checkbox" name="food" id="food" value="Натуральный корм">
+        <span>Натуральный корм</span><br>
+        <p>Пол питомца</p>
+        <input type="radio" name="sex" value="Самка">
+        <span>Самка</span><br>
+        <input type="radio" name="sex" value="Самец">
+        <span>Самец</span><br><br>
+        <label for="comments">Комментарий:</label><br><br>
+        <textarea name="comments" id="comments" rows="5" cols="20">Если хотите добавить что-то важное, можно написать здесь</textarea>
+        <p>Можете добавить фотографию питомца <input type="file"/></p>
+        <div id="button">Сохранить</div>
+        <input type="reset"/>
+    </form>
+    <script>
+        let button = document.getElementById('button');
+        function handler1(){
+            let nickname = document.getElementById('pet_names').value;
+            let ownerName = document.getElementById('owner_name').value;
+            let contacts = document.getElementById('owner_contacts').value;
+            let breed = document.getElementById('pet_breed').value;
+            let comments = document.getElementById('comments').value;
+            function getCheckedCheckBoxes() {
+                var checkboxes = document.getElementsByClassName('checkbox');
+                var checkboxesChecked = []; 
+                for (var i = 0; i < checkboxes.length; i++) {
+                    if (checkboxes[i].checked) {
+                        checkboxesChecked.push(checkboxes[i].value);
+                    }
+                }
+                return checkboxesChecked;
+            }
+            const viewRadio = () => {
+                const sex = document.querySelectorAll('input[name="sex"]');
+                for (const s of sex) {
+                    if (s.checked) {
+                    return (s.value)
+                    }
+                }
+            }
+            class Cat {
+                constructor(nickname, ownerName, contacts, breed, getCheckedCheckBoxes, viewRadio,comments){
+                    this.nickname = nickname;
+                    this.ownerName = ownerName;
+                    this.contacts = contacts;
+                    this.breed = breed;
+                    this.getCheckedCheckBoxes=getCheckedCheckBoxes;
+                    this.viewRadio=viewRadio;
+                    this.comments = comments;
+                }
+            }
+            let cat = new Cat(nickname, ownerName, contacts, breed, getCheckedCheckBoxes(), viewRadio(),comments);
+            console.log(cat);
+        }
+        button.addEventListener("click", handler1);
+    </script>
+</body>
+</html>
